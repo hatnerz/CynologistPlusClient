@@ -1,0 +1,42 @@
+<header class="header" *ngIf="uiPartsService.headerType != HeaderType.None">
+    <div class="container">
+        <div class="header__inner">
+            <div class="logo flex flex-align-items-center" [routerLink]="['/home']" style="gap: 10px;">
+                <img src="../../../assets/media/logo.png" style="max-height: 40px;">
+                <div class="header__text">
+                    <span style="color: white">Cynologist</span><span style="color: #84c8ff">Plus</span>
+                </div>
+            </div>
+            <nav class="nav">
+                <div>
+                    <p-button [style]="{color: 'white'}" [text]="true">{{ 'general.about' | translate }}</p-button>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <p-button [routerLink]="['/sign', 'in']" [rounded]="true">{{ 'general.logIn' | translate }}</p-button>
+                    <p-button [routerLink]="['/sign', 'up']" [rounded]="true" [outlined]="true" [style]="{color: 'white'}">{{ 'general.signUp' | translate }}</p-button>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <p-menu *ngIf="uiPartsService.sideMenuType!=SideMenuType.None" [model]="clientMenuItems"></p-menu>
+    <div class="main-content"> 
+        <router-outlet></router-outlet>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div>
+                <a class="footer__link">Help</a>
+                <a class="footer__link">About</a>
+                <a class="footer__link">Credentials</a>
+                <a class="footer__link">Privacy</a>
+            </div>
+            <div>
+                CynologistPlus 2023
+            </div>
+        </div>
+    </div>
+</footer>

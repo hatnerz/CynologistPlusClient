@@ -1,0 +1,25 @@
+<div class="sign-in">
+    <div class="container">
+        <div class="logo">
+            <img class="picture" src="../../../../../assets/media/logo.png">
+            <div class="text">CynologistPlus</div>
+        </div>
+        <div class="back-home">
+            <p-button [routerLink]="['/home']" [outlined]="true">{{ 'general.backHome' | translate }} </p-button>
+        </div>
+        <div class="form">
+            <form [formGroup]="signInForm">
+                <div class="title">{{ 'general.logIn' | translate }} </div>
+                <div class="form-inputs">
+                    <input pInputText [placeholder]="'auth.username' | translate">
+                    <input pInputText [placeholder]="'auth.password' | translate">
+                    <p-dropdown [style]="{width:'50%'}" formControlName="role" placeholder="Select role" [options]="roles"></p-dropdown>
+                    <div class="flex flex-justify-content-space-between">
+                        <p-button>{{ 'general.signUp' | translate }}</p-button>
+                        <p-button [routerLink]="['/sign','up']" [link]="true">{{ 'auth.gotoSignUp' | translate }}</p-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

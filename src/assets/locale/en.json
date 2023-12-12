@@ -1,0 +1,30 @@
+{
+    "users" : {
+        "admin" : "Admin",
+        "manager" : "Manager",
+        "client" : "Client",
+        "cynologist" : "Cynologist"
+    },
+
+    "general" : {
+        "logIn" : "Log in",
+        "logOut" : "Log out",
+        "signUp" : "Sign up",
+        "profile" : "Profile",
+        "backHome" : "Back to home page"
+    },
+
+    "home" : {
+        "intro" : "The system that brings together dog owners and cynologists"
+    },
+
+    "auth" : {
+        "signUpInfo" : "You can sign up as a dog owner",
+        "username" : "Username",
+        "password" : "Password",
+        "repeatPassword" : "Repeat password",
+        "email" : "Email",
+        "gotoSignIn" : "Already have an account?",
+        "gotoSignUp" : "Go to registration"
+    }
+}
