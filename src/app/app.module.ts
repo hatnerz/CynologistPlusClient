@@ -12,12 +12,28 @@ import { ButtonModule } from 'primeng/button';
 import { MenuModule} from 'primeng/menu';
 import { environment } from './environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ACCESS_TOKEN_KEY, AuthService } from './services/api/auth.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import {ToastModule} from "primeng/toast";
 
 
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/locale/', '.json');
 }
+
+export function tokenGetter() {
+    return localStorage.getItem(ACCESS_TOKEN_KEY);
+}
+
+const providers = [
+    AuthService,
+    MessageService
+]
+
 
 @NgModule({
   declarations: [
@@ -31,6 +47,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     BrowserAnimationsModule,
     ButtonModule,
+    FormsModule,
+    DropdownModule,
+    ToastModule,
+    JwtModule.forRoot({
+        config: {
+            tokenGetter,
+            allowedDomains: environment.tokenWhiteListedDomains
+        }
+    }),
+
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -42,13 +68,15 @@ export function HttpLoaderFactory(http: HttpClient) {
             useClass: MissingTranslationService 
         },
         useDefaultLang: false
-    })
+    }),
+    
   ],
   providers: [
     {
         provide: 'API_URL',
         useValue: environment.apiUrl
-    }
+    },
+    providers
   ],
   bootstrap: [AppComponent]
 })

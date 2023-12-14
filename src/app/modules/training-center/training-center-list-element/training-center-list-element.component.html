@@ -1,0 +1,13 @@
+<div class="training-center">
+    <div class="head flex flex-justify-content-space-between flex-align-items-center">
+        <h4 class="title">{{ trainingCenterData?.name }} </h4>
+        <span class="adress"> {{ getAdress() }} </span>
+    </div>
+    <p class="description"> {{ trainingCenterData?.description }} </p>
+        
+    <div class="actions flex flex-justify-content-end">
+        <p-button severity="info" *ngIf="isCanBeOrdered" [rounded]="true">{{ 'centers.createOrder' | translate }}</p-button>
+        <p-button severity="warning" *ngIf="IsCanBeModified" [rounded]="true">{{ 'centers.modifyAdress' | translate }}</p-button>
+        <p-button severity="danger" *ngIf="IsCanBeDeleted" [rounded]="true">{{ 'general.delete' | translate }}</p-button>
+    </div>
+</div>

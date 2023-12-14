@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -11,6 +12,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    ButtonModule,
     RouterModule.forChild([
         {
             path: '', pathMatch: 'full',

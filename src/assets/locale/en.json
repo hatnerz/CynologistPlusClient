@@ -11,7 +11,12 @@
         "logOut" : "Log out",
         "signUp" : "Sign up",
         "profile" : "Profile",
-        "backHome" : "Back to home page"
+        "backHome" : "Back to home page",
+        "about" : "About us",
+        "start" : "Start work",
+        "sortBy" : "Sort by",
+        "delete" : "Delete",
+        "modify" : "Modify" 
     },
 
     "home" : {
@@ -26,5 +31,19 @@
         "email" : "Email",
         "gotoSignIn" : "Already have an account?",
         "gotoSignUp" : "Go to registration"
+    },
+
+    "centers" : {
+        "dog" : "Dog",
+        "trainingCenter" : "Dog training center",
+        "trainingCentersList" : "Dog training centers list",
+        "createOrder" : "Create order",
+        "modifyAdress" : "Change adress"
+    },
+
+    "dog" : {
+        "createDog" : "Add a dog",
+        "dogName" : "Dog name",
+        "breed" : "Breed"
     }
 }

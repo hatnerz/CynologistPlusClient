@@ -1,1 +1,23 @@
-<p>training-center-search works!</p>
+<div class="training-centers">
+    <div class="container">
+        <div class="inner">
+            <h1>{{ "centers.trainingCentersList" | translate}}</h1>
+
+            <div class="filtering">
+                <span>{{ "general.sortBy" | translate }}</span>
+                <p-dropdown></p-dropdown>
+            </div>
+            <div style="margin-top: 30px;">
+                <app-training-center-list-element [isCanBeOrdered]="true" [trainingCenterData]="testTrainingCenter"></app-training-center-list-element>
+                <div *ngFor="let trainingCenter of trainingCentersList">
+                    <app-training-center-list-element 
+                        [trainingCenterData]="trainingCenter"
+                        [isCanBeOrdered]="authService.isCurrentUserClient()"
+                        [IsCanBeDeleted]="authService.isCurrentUserAdmin()"
+                        [IsCanBeModified]="authService.isCurrentUserAdmin()">
+                    </app-training-center-list-element>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

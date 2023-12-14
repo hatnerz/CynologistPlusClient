@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class DataBaseComponent {
 
+    lastBackupDate: any;
+
+    restoreDatabase() {
+        throw new Error('Method not implemented.');
+    }
+    
+    createBackup() {
+        throw new Error('Method not implemented.');
+    }
 }

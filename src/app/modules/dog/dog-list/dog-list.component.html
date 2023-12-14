@@ -1,0 +1,15 @@
+<div class="dog-container">
+    <div class="dog" *ngFor="let dog of dogs">
+        <div class="head">
+            <h3 style="padding-bottom: 10px;">Dog</h3>
+        </div>
+        <div class="inner flex flex-justify-content-space-between flex-align-items-center">
+            <div>
+                <p class="Name"> Name: {{ dog.name }} </p>
+                <p style="padding-top: 10px;" class="Name"> Breed: {{ dog.breed }} </p>
+            </div>
+            <p-button severity="info" [rounded]="true" (click)="goDogDetails(dog.id)">Details</p-button>
+        </div>
+    </div>
+</div>
+

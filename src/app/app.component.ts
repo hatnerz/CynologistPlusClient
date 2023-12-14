@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from './environments/environment';
+import { LocalizationService } from './services/localization.service';
 
 
 @Component({
@@ -10,9 +11,9 @@ import { environment } from './environments/environment';
 })
 export class AppComponent {
     title = 'CynologistPlus';
-    constructor (private translateService: TranslateService) {}
+    constructor (private translateService: TranslateService, private localizationService: LocalizationService) {}
 
     ngOnInit(): void {
-        this.translateService.use(environment.defaultLocale);
+        this.translateService.use(this.localizationService.getCurrentLanguage());
     }
 }

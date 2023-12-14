@@ -1,0 +1,24 @@
+<div class="settings">
+    <div class="container">
+        <div class="inner">
+            <h1>Settings</h1>
+            <div class="actions">
+                <h4 style="margin-bottom: 5px">Language</h4>
+                <p-dropdown [(ngModel)]="languageSetting" [style]="{width: '250px'}" [options] = "localizationService.languages"></p-dropdown>
+                
+                <h4 style="margin-bottom: 5px; margin-top: 20px">Data format</h4>
+                <p-dropdown [(ngModel)]="dataFormatSetting" [style]="{width: '250px'}" optionLabel="fullLang" [options] = "localizationService.formats" place></p-dropdown>
+                
+                <h4 style="margin-bottom: 5px; margin-top: 20px">Time format</h4>
+                <p-dropdown [(ngModel)]="timeFormat" [style]="{width: '250px'}" optionLabel="label" [options] = "localizationService.timeFormats" place></p-dropdown>
+                
+                <h4 style="margin-bottom: 5px; margin-top: 20px">Time zone</h4>
+                <p-dropdown [(ngModel)]="timeZone" [style]="{width: '250px'}" [options] = "localizationService.timeZones"></p-dropdown>
+                
+                <div style="padding-top: 30px;">
+                    <p-button (click)="applyChanges()">Apply Changes</p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

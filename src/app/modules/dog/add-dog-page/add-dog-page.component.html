@@ -1,0 +1,18 @@
+<div class="add-dog">
+    <div class="container">
+        <div class="inner">
+            <h1>{{ 'dog.createDog' | translate }}</h1>
+            <form [formGroup]="addDogForm" (ngSubmit)="sendForm()">
+                <p>{{ 'dog.dogName' | translate }}</p>
+                <input style="min-width: 400px;" pInputText formControlName="name">
+
+                <p style="margin-top: 20px;">{{ 'dog.breed' | translate }}</p>
+                <input style="min-width: 400px;" pInputText formControlName="breed">
+                
+                <div style="margin-top: 20px;">
+                    <p-button type="ngSubmit">{{ 'dog.createDog' | translate }}</p-button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="dog-page">
+    <div class="container">
+        <div class="inner">
+            <h1>Information about dog</h1>
+            <div *ngIf="!isLoading; else loadingBlock">
+                <div>Name: {{ dog.name }}</div>
+                <div>Breed: {{ dog.breed }} </div>
+            </div>
+            <ng-template #loadingBlock>
+                <div style="padding: 35px;">Loading...</div>
+            </ng-template>
+        </div>
+    </div>
+</div>

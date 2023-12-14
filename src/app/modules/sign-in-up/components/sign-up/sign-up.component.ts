@@ -8,10 +8,11 @@ import { HeaderType, UIPartsControlService } from 'src/app/services/ui-parts.ser
 })
 export class SignUpComponent implements OnInit, OnDestroy {
 
-    constructor(private uiPartsService: UIPartsControlService) {}
+    constructor(private uiPartsService: UIPartsControlService) {
+        this.uiPartsService.headerType = HeaderType.None;
+    }
 
     ngOnInit(): void {
-        this.uiPartsService.headerType = HeaderType.None;
     }
 
     ngOnDestroy(): void {

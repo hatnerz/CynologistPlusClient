@@ -25,6 +25,22 @@ const routes: Routes = [
             {
                 path: 'profile',
                 loadChildren: () => import('./modules/profile/profile.module').then((m) => m.ProfileModule)
+            },
+            {
+                path: 'settings',
+                loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule)
+            },
+            {
+                path: 'training-centers',
+                loadChildren: () => import('./modules/training-center/training-center.module').then(m => m.TrainingCenterModule)
+            },
+            {
+                path: 'orders',
+                loadChildren: () => import('./modules/order/order.module').then((m) => m.OrderModule)
+            },
+            {
+                path: 'dog',
+                loadChildren: () => import('./modules/dog/dog.module').then((m) => m.DogModule)
             }
         ]
     }

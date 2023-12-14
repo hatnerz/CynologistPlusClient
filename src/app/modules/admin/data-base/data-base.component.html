@@ -1,1 +1,14 @@
-<p>data-base works!</p>
+<div class="database">
+    <div class="container">
+        <div class="inner">
+            <h1>Database administration</h1>
+            <div class="actions">
+                <div>Last backupDate: {{ lastBackupDate }}</div>
+                <div>
+                    <p-button (click)="createBackup()">CreateBackup</p-button>
+                    <p-button (click)="restoreDatabase()">Restore database from the last backup</p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
