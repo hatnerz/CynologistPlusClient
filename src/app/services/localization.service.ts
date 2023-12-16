@@ -69,12 +69,12 @@ export class LocalizationService {
         {
             label: "12-hour (11:05 PM)",
             value: "12",
-            format: "hh:MM a"
+            format: "MM:hh a"
         },
         {
             label: "24-hour (23:05)",
             value: "24",
-            format: "HH:MM"
+            format: "MM:HH"
         }
     ]
 

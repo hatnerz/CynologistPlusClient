@@ -20,7 +20,7 @@ export class AuthService {
     ) 
     { }
 
-    register(registerInfo: RegisterModel): Observable<any> {
+    register(registerInfo: AuthModel): Observable<any> {
         return this.http.post(`${this.apiUrl}api/Auth/register`, registerInfo);
     }
 

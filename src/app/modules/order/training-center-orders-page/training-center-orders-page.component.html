@@ -1,0 +1,8 @@
+<div class="client-orders">
+    <div class="container">
+        <div *ngIf="!loading" class="inner">
+            <h1 style="margin-bottom: 15px;">Training center {{trainingCenter.name}} orders </h1>
+            <app-order-list [isCanBeModified]="true" [orders]="orders"></app-order-list>
+        </div>
+    </div>
+</div>

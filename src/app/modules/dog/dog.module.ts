@@ -9,7 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { DogListPageComponent } from './dog-list-page/dog-list-page.component';
 import { DogListComponent } from './dog-list/dog-list.component';
 import { DogPageComponent } from './dog-page/dog-page.component';
-
+import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -25,6 +26,8 @@ import { DogPageComponent } from './dog-page/dog-page.component';
     ReactiveFormsModule,
     InputTextModule,
     ButtonModule,
+    TableModule,
+    ChartModule,
     RouterModule.forChild([
         {
             path: 'add',

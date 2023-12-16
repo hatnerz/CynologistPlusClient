@@ -1,0 +1,29 @@
+<div *ngFor="let order of orders" class="order">
+    <div class="header flex flex-justify-content-space-between flex-align-items-center">
+        <h4 class="title">Order №{{ order.id }} </h4>
+        <p>Price: {{ getCorrectPrice(order) }}</p>
+    </div>    
+    <div class="body">
+        <div style="margin-top: 10px;">Dog: {{ order.dog?.name }}, {{ order.dog?.breed }} </div>
+        <div>Training center: {{ order.dogTrainingCenter?.name }}</div>
+        <div class="flex flex-justify-content-space-between flex-align-items-center" style="margin-top: 10px; font-size: 18px">
+            <div style="margin-top: 10px; font-style: italic;">{{ order.comment }} </div>
+            <div>
+                <div>Approved: {{ getCorrectBoolean(order.approved) }}</div>
+                <div>Paid: {{ getCorrectBoolean(order.isPaid) }}</div>
+                <div>Completed: {{ getCorrectBoolean(order.isCompleted) }}</div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 15px;" *ngIf="isCanBeModified" class="actions flex flex-justify-content-end">
+        <p-button severity="info" [rounded]="true">Process order</p-button>
+    </div>
+
+</div>
+
+<!--
+    <p-button severity="info" *ngIf="isCanBeOrdered" [rounded]="true">{{ 'centers.createOrder' | translate }}</p-button>
+        <p-button severity="warning" *ngIf="IsCanBeModified" [rounded]="true">{{ 'centers.modifyAdress' | translate }}</p-button>
+        <p-button severity="danger" *ngIf="IsCanBeDeleted" [rounded]="true">{{ 'general.delete' | translate }}</p-button>
+    
+-->

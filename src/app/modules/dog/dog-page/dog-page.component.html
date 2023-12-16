@@ -3,8 +3,40 @@
         <div class="inner">
             <h1>Information about dog</h1>
             <div *ngIf="!isLoading; else loadingBlock">
-                <div>Name: {{ dog.name }}</div>
-                <div>Breed: {{ dog.breed }} </div>
+                <div class="main-information">
+                    <h3>Main information</h3>
+                    <div>Name: {{ dog.name }}</div>
+                    <div>Breed: {{ dog.breed }} </div>
+                </div>
+
+                <div style="margin-top: 15px;" class="dog-skillss">
+                    <h3>Dog Skills</h3>
+                    <p-table [value]="dogSkills" [tableStyle]="{ 'min-width': '50rem' }">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Skill</th>
+                                <th>Type (category)</th>
+                                <th>Value</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-dogSkill>
+                            <tr class="dog-skill" (click)="visualizeDogSkill(dogSkill.skill.id, dogSkill.dogId, dogSkill.skill.name)">
+                                <td>{{ dogSkill.skill.name }}</td>
+                                <td>{{ dogSkill.skill.type }}</td>
+                                <td>{{ getCorrectSkillValue(dogSkill) }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+
+                <div class="dog-skill-chart" style="margin-top: 15px;">
+                    <h3>Dog skill change chart</h3>
+                    <p>Chose dog skill in table above to visualize</p>
+                    <div style="background-color: white; padding: 20px; margin-top: 5px;">
+                        <p-chart type="line" [data]="data" [options]="options" #chart></p-chart>
+                    </div>
+                    
+                </div>
             </div>
             <ng-template #loadingBlock>
                 <div style="padding: 35px;">Loading...</div>

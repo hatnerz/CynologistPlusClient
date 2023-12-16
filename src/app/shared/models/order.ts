@@ -1,3 +1,6 @@
+import { Dog } from "./dog";
+import { TrainingCenter } from "./training-center";
+
 export interface Order {
     id: number;
     orderDate: Date | null;
@@ -9,11 +12,12 @@ export interface Order {
     approved: boolean | null;
     dogId: number | null;
     dogTrainingCenterId: number | null;
+    dog: Dog | null;
+    dogTrainingCenter: TrainingCenter | null;
 }
 
 export interface CreateOrderModel {
     comment: string | null;
     dogId: number;
     dogTrainingCenterId: number;
-    timeOffset: number;
 }

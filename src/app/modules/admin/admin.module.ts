@@ -7,7 +7,10 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { DialogModule } from 'primeng/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -21,6 +24,10 @@ import { TranslateModule } from '@ngx-translate/core';
     ButtonModule,
     TableModule,
     TranslateModule,
+    DialogModule,
+    DropdownModule,
+    InputTextModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
         {
             path: 'database',

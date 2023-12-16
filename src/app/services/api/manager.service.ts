@@ -16,6 +16,14 @@ export class ManagerService {
         return this.http.get(`${this.apiUrl}api/Manager`);
     }
 
+    updateManager(manager: Manager) : Observable<any> {
+        return this.http.put(`${this.apiUrl}api/Manager`, manager);
+    }
+
+    deleteManager(managerId: number) : Observable<any> {
+        return this.http.delete(`${this.apiUrl}api/Manager/${managerId}`);
+    }
+
     convertManagersListToViewList(managers: Manager[]) : ManagerViewModel[] {
         var convertedManagers: ManagerViewModel[] = []
         for(let manager of managers) {

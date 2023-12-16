@@ -28,4 +28,12 @@ export class TrainingCenterService {
     getFilteredTrainingCenters(filters: Adress) : Observable<any> {
         return this.http.post(`${this.apiUrl}api/TrainingCenter/filter`, filters);
     }
+
+    getTrainingCenter(id: number) : Observable<any> {
+        return this.http.get(`${this.apiUrl}api/TrainingCenter/${id}`)
+    }
+
+    getManagerTrainingCenter(managerId: number) : Observable<any> {
+        return this.http.get(`${this.apiUrl}api/TrainingCenter/manager/${managerId}`)
+    }
 }

@@ -6,6 +6,7 @@ export interface Manager {
     firstName?: string,
     lastName?: string,
     dogTrainingCenter?: TrainingCenter,
+    dogTrainingCenterId?: number,
     authCredential?: AuthCredentials
 }
 

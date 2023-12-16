@@ -3,7 +3,7 @@
         <div class="inner">
             <h1>Managers</h1>
             <div>
-                <p-button icon="pi pi-plus" [style]="{marginBottom: '20px'}"></p-button>
+                <p-button icon="pi pi-plus" [style]="{marginBottom: '20px'}" (click)="openAddManager()"></p-button>
 
                 <div class="managers-table">
                     <p-table [value]="managers" [tableStyle]="{ 'min-width': '50rem' }">
@@ -24,7 +24,7 @@
                                 <td>{{ manager.login }}</td>
                                 <td style="padding-right: 0px">{{ manager.dogTrainingCenterName }}</td>
                                 <td style="padding: 10px" class="flex flex-justify-content-end flex-align-items-center">
-                                    <p-button severity="warning" (click)="modifyManager(manager.id)">{{ 'general.modify' | translate }}</p-button>  
+                                    <p-button severity="warning" (click)="startModifyManager(manager.id)">{{ 'general.modify' | translate }}</p-button>  
                                 </td>
                                 <td style="padding: 0px">
                                     <p-button severity="danger" (click)="deleteManager(manager.id)">{{ 'general.delete' | translate }}</p-button>
@@ -37,3 +37,75 @@
         </div>
     </div>
 </div>
+
+<p-dialog
+    header="Add manager"
+    [(visible)]="isManagerAddOverlayOpened"
+    [modal]="true"
+    [style]="{ width: '30vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    <ng-container *ngTemplateOutlet="contentDialog"></ng-container>
+</p-dialog>
+
+<p-dialog
+    header="Modify manager info"
+    [(visible)]="isManagerModifyOverlayOpened"
+    [modal]="true"
+    [style]="{ width: '30vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    <ng-container *ngTemplateOutlet="contentDialogModify"></ng-container>
+</p-dialog>
+
+
+<ng-template #contentDialog>
+    <form [formGroup]="addManagerForm" 
+    (ngSubmit)="addManager()">
+        <div style="display: flex; flex-direction: column">
+            
+            <label>Login (email)</label>
+            <input
+                type="text"
+                formControlName="login"
+                pInputText
+                placeholder="login"/>
+            
+            <label style="margin-top: 20px">Password</label>
+            <input
+                type="password"
+                pInputText
+                formControlName="password"
+                placeholder="password"/>
+
+            <button pButton style="margin-top: 20px" type="submit">Add manager</button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #contentDialogModify>
+    <form [formGroup]="modifyManagerForm" 
+    (ngSubmit)="updateManager()">
+        <div style="display: flex; flex-direction: column">
+
+            <label>Training center</label>
+            <p-dropdown formControlName="dogTrainingCenter" [style]="{width: '100%'}" [options]="trainingCentersList" optionLabel="name"></p-dropdown>
+
+            <label style="margin-top: 20px">First name</label>
+            <input
+                type="text"
+                formControlName="firstName"
+                pInputText
+                placeholder="first name"/>
+            
+            <label style="margin-top: 20px">Last name</label>
+            <input
+                type="text"
+                pInputText
+                formControlName="lastName"
+                placeholder="last name"/>
+
+            <button pButton style="margin-top: 20px" type="submit">Change manager data</button>
+        </div>
+    </form>
+</ng-template>

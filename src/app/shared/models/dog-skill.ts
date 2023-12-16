@@ -20,3 +20,10 @@ export interface DogSkillLog {
     skillId: number | null;
     changeDate: Date
 }
+
+export interface DogSkillViewModel {
+    id: number;
+    value: number | null;
+    dogId: number | null;
+    skill: Skill;
+}

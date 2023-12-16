@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { LocalizationService } from 'src/app/services/localization.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class SettingsPageComponent {
     timeZone: any;
     timeFormat: any;
 
-    constructor(public localizationService: LocalizationService)
+    constructor(public localizationService: LocalizationService, private messageService: MessageService)
     {
         this.languageSetting = localizationService.getCurrentLanguage();
         this.dataFormatSetting = localizationService.getCurrentDataFormat();
@@ -26,5 +27,6 @@ export class SettingsPageComponent {
         this.localizationService.setCurrentDataFormat(this.dataFormatSetting.lang);
         this.localizationService.setCurrentTimeZone(this.timeZone);
         this.localizationService.setCurrentTimeFormat(this.timeFormat.value);
+        this.messageService.add({severity:'success', summary:'Success', detail:'Settings successfully applied'})
     }
 }
