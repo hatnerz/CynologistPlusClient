@@ -14,30 +14,32 @@ import { AuthModel } from 'src/app/shared/models/auth-models';
 })
 export class SignInComponent implements OnInit, OnDestroy {
 
+    // This object is used to track and automatically cancel subscriptions in a component
     destroy = new Subject<any>();
-
     signInForm!: FormGroup;
-    
     roles = [
         { label: 'Client', value: 'Client' },
         { label: 'Manager', value: 'Manager' },
         { label: 'Cynologist', value: 'Cynologist' },
         { label: 'Admin', value: 'Admin' },
       ];
-    
       
     constructor(
         private uiPartsService: UIPartsControlService, 
         private authService: AuthService,
         private messageService: MessageService,
-        private router: Router) {
+        private router: Router) 
+    {
         this.uiPartsService.headerType = HeaderType.None;
+        this.uiPartsService.resetMenu();
     }
 
+    // Lifecycle hook that performs when component has initialized
     ngOnInit(): void {
         this.initializeForm();
     }
 
+    // Lifecycle hook that performs when component has destroyed
     ngOnDestroy(): void {
         this.uiPartsService.reset();
     }
@@ -67,19 +69,20 @@ export class SignInComponent implements OnInit, OnDestroy {
                 error: (error) => {
                     var summary = "Error";
                     var message = "Error";
+
+                    // 401 error code means unathorized
                     if(error.status == 401) {
                         summary = "Incorrect credentials";
                         message = error.error.message;
                     }
+                    
+                    // We receive code 0 when we can't send request to the server
                     if(error.status == 0) {
                         summary = "Connection refused";
                         message = "Cannot connect to server" 
                     }
-                    console.log(error);
                     this.messageService.add({severity: 'error', summary: summary, detail: message})    
                 }
             })
-
     }
-    
 }

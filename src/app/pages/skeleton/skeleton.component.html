@@ -13,10 +13,9 @@
                         <p-button [style]="{color: 'white'}" [text]="true">{{ 'general.about' | translate }}</p-button>
                     </div>
 
-                    <div *ngIf="!authService.isAuthenticated()">
-                        <p-button [style]="{color: 'white'}" [text]="true">{{ 'general.start' | translate }}</p-button>
+                    <div>
+                        <p-button [style]="{color: 'white'}" [routerLink]="['/home','start']" [text]="true">{{ 'general.start' | translate }}</p-button>
                     </div>
-    
 
                     <div *ngIf="!authService.isAuthenticated()" style="display: flex; gap: 10px;">
                         <p-button [routerLink]="['/sign', 'in']" [rounded]="true">{{ 'general.logIn' | translate }}</p-button>
@@ -44,7 +43,10 @@
         </div>
     </header>
     <main class="main">
-        <p-menu *ngIf="uiPartsService.sideMenuType!=SideMenuType.None" [model]="clientMenuItems"></p-menu>
+        <div class="aside" *ngIf="uiPartsService.sideMenuType!=SideMenuType.None" >
+            <h3 class="aside__menu">Menu</h3>
+            <p-menu [style]="{border: 'none'}" [model]="getCurrentMenuItems()"></p-menu>
+        </div>
         <div class="main-content"> 
             <router-outlet></router-outlet>
         </div>

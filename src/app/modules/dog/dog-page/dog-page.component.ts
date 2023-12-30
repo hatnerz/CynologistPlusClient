@@ -81,8 +81,6 @@ export class DogPageComponent implements OnInit {
                 data.push(dogSkill.currentValue);
             }
         }
-        console.log(labels);
-        console.log(data);
         this.data.labels = labels;
         this.data.datasets[0].data = data;
         this.data.datasets[0].label = dogSkillName;

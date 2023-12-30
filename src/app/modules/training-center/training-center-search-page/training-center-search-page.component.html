@@ -3,12 +3,15 @@
         <div class="inner">
             <h1>{{ "centers.trainingCentersList" | translate}}</h1>
 
-            <div class="filtering">
+            <!--<div class="filtering">
                 <span>{{ "general.sortBy" | translate }}</span>
                 <p-dropdown></p-dropdown>
+            </div>-->
+
+            <div *ngIf="authService.isCurrentUserAdmin()">
+                <p-button icon="pi pi-plus" (click)="isAddTrainingCenterDialogOpened = true"></p-button>
             </div>
             <div style="margin-top: 30px;">
-                <app-training-center-list-element [isCanBeOrdered]="true" [trainingCenterData]="testTrainingCenter"></app-training-center-list-element>
                 <div *ngFor="let trainingCenter of trainingCentersList">
                     <app-training-center-list-element 
                         [trainingCenterData]="trainingCenter"
@@ -21,3 +24,60 @@
         </div>
     </div>
 </div>
+
+<p-dialog
+    header="Add training center"
+    [(visible)]="isAddTrainingCenterDialogOpened"
+    [modal]="true"
+    [style]="{ width: '30vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    <ng-container *ngTemplateOutlet="contentDialog"></ng-container>
+</p-dialog>
+
+<ng-template #contentDialog>
+    <form [formGroup]="addTrainingCenterForm" 
+    (ngSubmit)="addTrainingCenter()">
+        <div style="display: flex; flex-direction: column">
+            <label>Name</label>
+            <input
+                type="text"
+                pInputText
+                formControlName="name"/>
+            
+            <label style="margin-top: 20px">Description</label>
+            <input
+                type="text"
+                pInputText
+                formControlName="description"/>
+
+            <h5 style="margin-top: 20px">Adress</h5>
+            <label style="margin-top: 20px">Country</label>
+            <input
+                type="text"
+                pInputText
+                formControlName="country"/>
+
+            <label style="margin-top: 20px">City</label>
+            <input
+                type="text"
+                pInputText
+                formControlName="city"/>
+
+            <label style="margin-top: 20px">Street</label>
+            <input
+                type="text"
+                pInputText
+                formControlName="street"/>
+
+                
+            <label style="margin-top: 20px">House</label>
+            <input
+                type="text"
+                pInputText
+                formControlName="house"/>
+
+            <button pButton style="margin-top: 20px" type="submit">Create training center</button>
+        </div>
+    </form>
+</ng-template>

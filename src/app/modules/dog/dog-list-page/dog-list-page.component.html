@@ -2,6 +2,8 @@
     <div class="container">
         <div class="inner">
             <h1>My dogs</h1>
+
+            <p-button icon="pi pi-plus" [routerLink]="['/dog', 'add']"></p-button>
             <app-dog-list [dogs]="dogs"></app-dog-list>
         </div>
     </div>

@@ -69,14 +69,16 @@ export class LocalizationService {
         {
             label: "12-hour (11:05 PM)",
             value: "12",
-            format: "MM:hh a"
+            format: "hh:mm a"
         },
         {
             label: "24-hour (23:05)",
             value: "24",
-            format: "MM:HH"
+            format: "HH:mm"
         }
     ]
+
+    currencies = ["$", "₴", "€", "£", "¥"]
 
     constructor(private translateService: TranslateService)
     {}
@@ -125,7 +127,7 @@ export class LocalizationService {
         return format
     }
 
-    getCurrentTimeZone() {
+    getCurrentTimeZone() : number {
         var result = localStorage.getItem("timezone");
         if(result == null)
             return environment.defaultTimeZone;

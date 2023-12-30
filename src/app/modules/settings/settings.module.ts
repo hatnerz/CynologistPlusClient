@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -16,6 +17,7 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     DropdownModule,
     FormsModule,
+    TranslateModule,
     ButtonModule,
     RouterModule.forChild([
         {

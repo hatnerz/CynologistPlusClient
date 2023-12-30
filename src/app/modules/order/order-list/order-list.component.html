@@ -1,7 +1,10 @@
 <div *ngFor="let order of orders" class="order">
     <div class="header flex flex-justify-content-space-between flex-align-items-center">
         <h4 class="title">Order №{{ order.id }} </h4>
-        <p>Price: {{ getCorrectPrice(order) }}</p>
+        <div class="flex flex-direction-column flex-align-items-end">
+            <p style="color: gray">Order date: {{ getCorrectOrderDate(order) | date : orderDateFormat }}</p>
+            <p>Price: {{ getCorrectPrice(order) }}</p>
+        </div>
     </div>    
     <div class="body">
         <div style="margin-top: 10px;">Dog: {{ order.dog?.name }}, {{ order.dog?.breed }} </div>
@@ -16,7 +19,7 @@
         </div>
     </div>
     <div style="margin-top: 15px;" *ngIf="isCanBeModified" class="actions flex flex-justify-content-end">
-        <p-button severity="info" [rounded]="true">Process order</p-button>
+        <p-button severity="info" [rounded]="true" (click)="sendOrderModifying(order)">Process order</p-button>
     </div>
 
 </div>

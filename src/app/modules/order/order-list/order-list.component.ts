@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LocalizationService } from 'src/app/services/localization.service';
 import { Order } from 'src/app/shared/models/order';
 
@@ -9,14 +9,21 @@ import { Order } from 'src/app/shared/models/order';
 })
 export class OrderListComponent {
 
+    orderDateFormat!: string;
+
     constructor(public localizationService: LocalizationService)
-    {}
+    {
+        this.getCorrentOrderDateFormat();
+    }
 
     @Input()
     isCanBeModified: boolean = false;
 
     @Input()
     orders!: Order[]
+
+    @Output()
+    modifyOrderButtonClick = new EventEmitter<Order>();
 
     getCorrectPrice(order: Order) {
         if(order.price == null || order.price == undefined)
@@ -32,4 +39,22 @@ export class OrderListComponent {
             return "No";
         }
     }
+
+    getCorrentOrderDateFormat() {
+        this.orderDateFormat = 
+            this.localizationService.getCurrentDataFormat()?.value + " "
+            + this.localizationService.getCurrentTimeFormat()?.format;
+    }
+
+    getCorrectOrderDate(order: Order) {
+        var newDate = new Date(order.orderDate);
+        newDate.setHours(newDate.getHours() + this.localizationService.getCurrentTimeZone());
+        return newDate;
+    }
+
+    sendOrderModifying(order: Order) {
+        var newOrder = { ...order }
+        this.modifyOrderButtonClick.emit(newOrder);
+    }
+
 }

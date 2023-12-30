@@ -27,6 +27,7 @@ export class OrderService {
     }
 
     changeOrder(order: Order) : Observable<any> {
+        console.log(order);
         return this.http.patch(`${this.apiUrl}api/Order`, order);
     }
 }

@@ -19,9 +19,19 @@ export class SkeletonComponent implements OnInit {
     userRole?: string;
 
     public clientMenuItems: MenuItem[] = [
-        { label: 'Orders', routerLink: '/' },
-        { label: 'Dogs', routerLink: '/dogs' },
-        { label: 'Training Centers', routerLink: '/training-centers' }
+        { label: 'Orders', routerLink: ['/order', 'client-list'] },
+        { label: 'Dogs', routerLink: ['/dog', 'list'] },
+        { label: 'Training Centers', routerLink: ['/training-centers', 'list'] }
+    ]
+
+    public adminMenuItems: MenuItem[] = [
+        { label: 'Managers', routerLink: ['/admin', 'managers'] },
+        { label: 'Database', routerLink: ['/admin', 'database'] },
+        { label: 'Training centers', routerLink: ['training-centers', 'list']}
+    ]
+
+    public managerMenuItems: MenuItem[] = [
+        { label: 'Training center orders', routerLink: ['order','training-center-list'] },
     ]
 
     constructor(public uiPartsService: UIPartsControlService, public authService: AuthService, public localizationService: LocalizationService) {
@@ -41,5 +51,17 @@ export class SkeletonComponent implements OnInit {
         this.localizationService.setLanguage(this.selectedLanguage);
     }
 
+    getCurrentMenuItems() {
+        if(this.uiPartsService.sideMenuType == SideMenuType.User) {
+            return this.clientMenuItems
+        }
+        if(this.uiPartsService.sideMenuType == SideMenuType.Manager) {
+            return this.managerMenuItems
+        }
+        if(this.uiPartsService.sideMenuType == SideMenuType.Admin) {
+            return this.adminMenuItems
+        }
+        return this.clientMenuItems
+    }
 
 }

@@ -11,18 +11,7 @@ import { Dog } from 'src/app/shared/models/dog';
 export class DogListPageComponent {
 
     clientId!: number;
-    dogs: Dog[] = [
-        {
-            name: "test",
-            breed: "test",
-            clientId: 1
-        },
-        {
-            name: "test2",
-            breed: "test2",
-            clientId: 2
-        }
-    ]
+    dogs!: Dog[];
 
     
     constructor(private dogService: DogService, private authService: AuthService) 

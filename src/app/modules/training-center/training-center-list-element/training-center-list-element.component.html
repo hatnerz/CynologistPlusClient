@@ -3,10 +3,10 @@
         <h4 class="title">{{ trainingCenterData?.name }} </h4>
         <span class="adress"> {{ getAdress() }} </span>
     </div>
-    <p class="description"> {{ trainingCenterData?.description }} </p>
+    <p class="description" style="width: 80%;"> {{ trainingCenterData?.description }} </p>
         
     <div class="actions flex flex-justify-content-end">
-        <p-button severity="info" *ngIf="isCanBeOrdered" [rounded]="true">{{ 'centers.createOrder' | translate }}</p-button>
+        <p-button [routerLink]="['/order', 'create', trainingCenterData?.id]" severity="info" *ngIf="isCanBeOrdered" [rounded]="true">{{ 'centers.createOrder' | translate }}</p-button>
         <p-button severity="warning" *ngIf="IsCanBeModified" [rounded]="true">{{ 'centers.modifyAdress' | translate }}</p-button>
         <p-button severity="danger" *ngIf="IsCanBeDeleted" [rounded]="true">{{ 'general.delete' | translate }}</p-button>
     </div>

@@ -45,5 +45,14 @@
         "createDog" : "Додати собаку",
         "dogName" : "Назва собаки",
         "breed" : "Порода"
+    },
+
+    "settings" : {
+        "language" : "Мова",
+        "dataFormat" : "Формат дати",
+        "timeFormat" : "Формат часу",
+        "timeZone" : "Часовий пояс",
+        "applyChanges" : "Прийняти зміни",
+        "settings" : "Налаштування"
     }
 }

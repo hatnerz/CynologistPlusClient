@@ -2,7 +2,66 @@
     <div class="container">
         <div *ngIf="!loading" class="inner">
             <h1 style="margin-bottom: 15px;">Training center {{trainingCenter.name}} orders </h1>
-            <app-order-list [isCanBeModified]="true" [orders]="orders"></app-order-list>
+            <app-order-list (modifyOrderButtonClick)="initModifyOrderDialog($event)" [isCanBeModified]="true" [orders]="orders"></app-order-list>
         </div>
     </div>
 </div>
+
+<p-dialog
+    header="Modify manager info"
+    [(visible)]="isOrderModifyDialogOpened"
+    [modal]="true"
+    [style]="{ width: '30vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    <ng-container *ngTemplateOutlet="contentDialog"></ng-container>
+</p-dialog>
+
+
+<ng-template #contentDialog>
+    <div style="display: flex; flex-direction: column">
+        <p style="margin-bottom: 20px">Order № {{ currentModifyingOrder?.id }}</p>
+        
+        <div class="flex flex-align-items-end" style="gap: 5px;">
+            <div>
+                <p>Price</p>
+                <p-inputNumber
+                    [(ngModel)]="currentModifyingOrder!.price"
+                    placeholder="price"/>
+            </div>
+            <div>
+                <p-dropdown 
+                    [options]="localizationService.currencies" 
+                    [(ngModel)] = "currentModifyingOrder!.currency">
+                </p-dropdown>   
+            </div>
+        </div>
+        <div class="flex flex-justify-content-space-between" style="margin-top: 20px;">
+            <div>
+                <p>Paid</p>
+                <p-dropdown 
+                    [options]="yesNoOptions" 
+                    [(ngModel)] = "currentModifyingOrder!.isPaid">
+                </p-dropdown>
+            </div>
+            <div>
+                <p>Approved</p>
+                <p-dropdown 
+                    [options]="yesNoOptions" 
+                    [(ngModel)] = "currentModifyingOrder!.approved">
+                </p-dropdown>
+            </div>
+            <div>
+                <p>Completed</p>
+                <p-dropdown 
+                    [options]="yesNoOptions" 
+                    [(ngModel)] = "currentModifyingOrder!.isCompleted">
+                </p-dropdown>
+            </div>
+        </div>
+
+        <textarea pInputTextarea [(ngModel)]="currentModifyingOrder!.comment" style="margin-top: 20px; resize: none;"></textarea>
+ 
+        <button pButton style="margin-top: 20px" (click)="modifyOrder()">Modify order</button>
+    </div>
+</ng-template>

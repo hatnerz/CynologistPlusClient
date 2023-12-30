@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/api/auth.service';
 import { DogService } from 'src/app/services/api/dog.service';
@@ -26,7 +26,8 @@ export class CreateOrderPageComponent implements OnInit {
         private authService: AuthService,
         private orderService: OrderService,
         private route: ActivatedRoute,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private router: Router,
     )
     {}
 
@@ -61,11 +62,11 @@ export class CreateOrderPageComponent implements OnInit {
             dogId: this.createOrderForm.get('dog')?.value.id,
             dogTrainingCenterId: this.createOrderForm.get('trainingCenter')?.value.id
         }
-        console.log(createOrderModel);
 
         this.orderService.createOrder(createOrderModel).subscribe({
             next: (response) => {
                 this.messageService.add({severity:'success',summary:'Sucess',detail:'Order sucessfully created'})
+                this.router.navigate(['/order','client-list'])
             },
             error: (error) => {
                 this.messageService.add({severity:'error',summary:'Error',detail: error.error.message});

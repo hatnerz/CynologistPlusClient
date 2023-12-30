@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { StartPageComponent } from './start-page/start-page.component';
 
 
 
 @NgModule({
   declarations: [
-    HomePageComponent
+    HomePageComponent,
+    StartPageComponent
   ],
   imports: [
     TranslateModule,
@@ -17,6 +19,10 @@ import { TranslateModule } from '@ngx-translate/core';
         {
             path: '', pathMatch: 'full',
             component: HomePageComponent
+        },
+        {
+            path:'start',
+            component: StartPageComponent
         }
     ])
   ]

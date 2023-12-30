@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataBaseComponent } from './data-base/data-base.component';
 import { ManagersControlComponent } from './managers-control/managers-control.component';
-import { TrainingCentersControlComponent } from './training-centers-control/training-centers-control.component';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -16,8 +15,7 @@ import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
     DataBaseComponent,
-    ManagersControlComponent,
-    TrainingCentersControlComponent
+    ManagersControlComponent
   ],
   imports: [
     CommonModule,
@@ -36,10 +34,6 @@ import { DropdownModule } from 'primeng/dropdown';
         {
             path: 'managers',
             component: ManagersControlComponent,
-        },
-        {
-            path: 'training-centers',
-            component: TrainingCentersControlComponent
         }
     ])
   ]

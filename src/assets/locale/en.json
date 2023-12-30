@@ -45,5 +45,14 @@
         "createDog" : "Add a dog",
         "dogName" : "Dog name",
         "breed" : "Breed"
+    },
+
+    "settings" : {
+        "language" : "Language",
+        "dataFormat" : "Data format",
+        "timeFormat" : "Time format",
+        "timeZone" : "Time zone",
+        "applyChanges" : "Apply changes",
+        "settings" : "Settings"
     }
 }

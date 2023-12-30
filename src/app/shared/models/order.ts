@@ -3,7 +3,7 @@ import { TrainingCenter } from "./training-center";
 
 export interface Order {
     id: number;
-    orderDate: Date | null;
+    orderDate: Date;
     price: number | null;
     currency: string | null;
     comment: string | null;
